@@ -1,4 +1,7 @@
 import { useState, useEffect } from 'react'
+import { 
+  Button, Field, Input, Textarea
+} from '@fluentui/react-components'
 import './App.css'
 
 const { ipcRenderer } = window.require('electron')
@@ -46,22 +49,22 @@ function App() {
       <h1>CRUD Application</h1>
       
       <form onSubmit={handleSubmit} className="form">
-        <input
-          type="text"
-          placeholder="Title"
-          value={formData.title}
-          onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-          required
-        />
-        <textarea
-          placeholder="Description"
+        
+      <Field label="Title"  required> 
+        <Input value={formData.title} 
+          onChange={(e) => setFormData({ ...formData, title: e.target.value })} />
+      </Field>
+      
+    <Field label="Description">
+      <Textarea  
           value={formData.description}
-          onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-          required
-        />
-        <button type="submit">
-          {editingId ? 'Update' : 'Add'} Item
-        </button>
+          onChange={(e) => setFormData({ ...formData, description: e.target.value })}/>
+    </Field>
+        
+        <Button type="submit" 
+           shape="square" appearance="primary">
+          {editingId ? 'Mettre à jour' : 'Ajouter'} Item
+        </Button>
       </form>
 
       <div className="items">
@@ -70,8 +73,15 @@ function App() {
             <h3>{item.title}</h3>
             <p>{item.description}</p>
             <div className="actions">
-              <button onClick={() => handleEdit(item)}>Modifier</button>
-              <button onClick={() => handleDelete(item.id)}>Supprimer</button>
+              
+        <Button 
+           shape="square"
+          onClick={() => handleEdit(item)}>
+          Modifier
+        </Button>
+        
+      <Button 
+           shape="square" onClick={() => handleDelete(item.id)}>Supprimer</Button>
             </div>
           </div>
         ))}

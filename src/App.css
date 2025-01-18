@@ -22,19 +22,6 @@ textarea {
   height: 100px;
 }
 
-button {
-  padding: 8px 16px;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-button:hover {
-  background-color: #45a049;
-}
 
 .items {
   display: grid;
@@ -60,12 +47,4 @@ button:hover {
 .actions {
   display: flex;
   gap: 10px;
-}
-
-.actions button:nth-child(2) {
-  background-color: #f44336;
-}
-
-.actions button:nth-child(2):hover {
-  background-color: #da190b;
 }
